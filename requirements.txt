@@ -1,8 +1,8 @@
-streamlit
-streamlit-webrtc
-torch
-torchvision
-mediapipe
-opencv-python-headless
-numpy
-av
+streamlit==1.45.1
+streamlit-webrtc==0.62.4
+torch==2.2.2
+torchvision==0.17.2
+mediapipe==0.10.14
+opencv-python-headless==4.9.0.80
+numpy==1.26.4
+av==14.4.0
