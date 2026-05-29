@@ -2,6 +2,8 @@ import streamlit as st
 import cv2
 import torch
 import mediapipe as mp
+st.write(mp.__file__)
+st.write(dir(mp))
 import av
 
 from streamlit_webrtc import webrtc_streamer, VideoProcessorBase
