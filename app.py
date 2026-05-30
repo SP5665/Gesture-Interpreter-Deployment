@@ -72,10 +72,15 @@ class GestureProcessor(VideoProcessorBase): # This class processes each video fr
 
         return av.VideoFrame.from_ndarray(img, format="bgr24") # Convert back to video frame for streaming
 
-#ICE/STUN configuration.
+#ICE/STUN and TURN configuration.
 RTC_CONFIGURATION = {
     "iceServers": [
-        {"urls": ["stun:stun.l.google.com:19302"]}
+        {"urls": ["stun:stun.l.google.com:19302"]},
+        {
+            "urls": ["turn:your-turn-server.com:3478"],
+            "username": "user",
+            "credential": "pass"
+        }
     ]
 }
 
