@@ -2,8 +2,6 @@ import streamlit as st
 import cv2
 import torch
 import mediapipe as mp
-st.write(mp.__file__)
-st.write(dir(mp))
 import av
 
 from streamlit_webrtc import webrtc_streamer, VideoProcessorBase
@@ -74,10 +72,18 @@ class GestureProcessor(VideoProcessorBase): # This class processes each video fr
 
         return av.VideoFrame.from_ndarray(img, format="bgr24") # Convert back to video frame for streaming
 
+#ICE/STUN configuration.
+RTC_CONFIGURATION = {
+    "iceServers": [
+        {"urls": ["stun:stun.l.google.com:19302"]}
+    ]
+}
+
 #Opens webcam in browser, Runs your GestureProcessor on each frame
 webrtc_streamer(
     key="gesture",
     video_processor_factory=GestureProcessor,
+    rtc_configuration=RTC_CONFIGURATION,
     media_stream_constraints={
         "video": {
             "width": {"ideal": 640},
